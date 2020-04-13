@@ -10,13 +10,20 @@ import Foundation
 
 class TimeConverter {
 
-    static func convertTimestamp(_ timezone: Int?,_ timestamp: Int?) -> String? {
+    static func convertTimestampToTime(_ timezone: String?,_ timestamp: Int?) -> String? {
         guard let timezone = timezone, let timestamp = timestamp else { return nil }
-        
         let date = Date(timeIntervalSince1970: TimeInterval(timestamp))
         let formatter = DateFormatter()
         formatter.timeStyle = .short
-        formatter.timeZone = TimeZone(secondsFromGMT: timezone)
+        formatter.timeZone = TimeZone(identifier: timezone)
+        return formatter.string(from: date)
+    }
+
+    static func convertTimestampToWeekDay(_ timestamp: Int?) -> String? {
+        guard let timestamp = timestamp else { return nil }
+        let date = Date(timeIntervalSince1970: TimeInterval(timestamp))
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE"
         return formatter.string(from: date)
     }
     

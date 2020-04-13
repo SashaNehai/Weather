@@ -11,24 +11,15 @@ import UIKit
 class FutureCell: UITableViewCell {
 
     // MARK: - Outlets
-    @IBOutlet weak var dayLabel: UILabel!
-    @IBOutlet weak var tempLabel: UILabel!
-
-    // MARK: - Life Cycle
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    @IBOutlet weak private var weekDay: UILabel!
+    @IBOutlet weak private var maxTemp: UILabel!
+    @IBOutlet weak private var minTemp: UILabel!
     
     // MARK: - Methods
-    func setFutureCell() {
-        
+    func setFutureCell(forecast: ForecastByDate) {
+        weekDay.text = forecast.day
+        maxTemp.text = forecast.tempMax
+        minTemp.text = forecast.tempMin
     }
     
 }

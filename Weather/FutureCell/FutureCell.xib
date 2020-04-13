@@ -9,44 +9,64 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FutureCell" rowHeight="71" id="KGk-i7-Jjw" customClass="FutureCell" customModule="Weather" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="374" height="71"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FutureCell" rowHeight="127" id="KGk-i7-Jjw" customClass="FutureCell" customModule="Weather" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="573" height="127"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="374" height="71"/>
+                <rect key="frame" x="0.0" y="0.0" width="573" height="127"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="204" translatesAutoresizingMaskIntoConstraints="NO" id="C7N-lV-iwL">
-                        <rect key="frame" x="5" y="5" width="364" height="61"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="AVP-NN-n7T">
+                        <rect key="frame" x="5" y="5" width="548" height="117"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NC6-29-744">
-                                <rect key="frame" x="0.0" y="0.0" width="80" height="61"/>
+                                <rect key="frame" x="0.0" y="0.0" width="274" height="117"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhA-db-6Tc">
-                                <rect key="frame" x="284" y="0.0" width="80" height="61"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGq-By-IBM">
+                                <rect key="frame" x="274" y="0.0" width="274" height="117"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kPx-lI-3iQ">
+                                        <rect key="frame" x="224" y="5" width="42" height="107"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhA-db-6Tc">
+                                        <rect key="frame" x="182" y="8" width="42" height="101"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="kPx-lI-3iQ" firstAttribute="top" secondItem="bGq-By-IBM" secondAttribute="top" constant="5" id="1gm-wE-7dc"/>
+                                    <constraint firstAttribute="trailing" secondItem="kPx-lI-3iQ" secondAttribute="trailing" constant="8" id="23Z-fW-qR7"/>
+                                    <constraint firstAttribute="bottom" secondItem="lhA-db-6Tc" secondAttribute="bottom" constant="8" id="Gey-qM-oOQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="lhA-db-6Tc" secondAttribute="trailing" constant="50" id="Kw5-3p-yxG"/>
+                                    <constraint firstAttribute="bottom" secondItem="kPx-lI-3iQ" secondAttribute="bottom" constant="5" id="fqX-Yg-bfK"/>
+                                    <constraint firstItem="lhA-db-6Tc" firstAttribute="top" secondItem="bGq-By-IBM" secondAttribute="top" constant="8" id="y29-Ld-gsO"/>
+                                </constraints>
+                            </view>
                         </subviews>
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="C7N-lV-iwL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="0jb-Pn-1ZU"/>
-                    <constraint firstAttribute="bottom" secondItem="C7N-lV-iwL" secondAttribute="bottom" constant="5" id="AGc-4j-jWQ"/>
-                    <constraint firstItem="C7N-lV-iwL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="FjJ-Mm-vBo"/>
-                    <constraint firstAttribute="trailing" secondItem="C7N-lV-iwL" secondAttribute="trailing" constant="5" id="diq-xm-YJS"/>
+                    <constraint firstAttribute="bottom" secondItem="AVP-NN-n7T" secondAttribute="bottom" constant="5" id="ZmQ-LQ-el0"/>
+                    <constraint firstItem="AVP-NN-n7T" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="fWf-FS-dky"/>
+                    <constraint firstItem="AVP-NN-n7T" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="nca-M0-I81"/>
+                    <constraint firstAttribute="trailing" secondItem="AVP-NN-n7T" secondAttribute="trailing" constant="20" symbolic="YES" id="wLZ-HP-QgX"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="dayLabel" destination="NC6-29-744" id="a3r-ma-wyV"/>
-                <outlet property="tempLabel" destination="lhA-db-6Tc" id="rEC-Nk-MKa"/>
+                <outlet property="maxTemp" destination="lhA-db-6Tc" id="rEC-Nk-MKa"/>
+                <outlet property="minTemp" destination="kPx-lI-3iQ" id="Q1U-11-w4n"/>
+                <outlet property="weekDay" destination="NC6-29-744" id="a3r-ma-wyV"/>
             </connections>
-            <point key="canvasLocation" x="169.56521739130437" y="161.71875"/>
+            <point key="canvasLocation" x="65.94202898550725" y="86.049107142857139"/>
         </tableViewCell>
     </objects>
 </document>

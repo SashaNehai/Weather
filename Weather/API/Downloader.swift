@@ -15,20 +15,19 @@ class Downloader {
     let session = URLSession(configuration: .default)
     
     // MARK: - Methods
-    func requestWeather(lat: Double, lon: Double, comlition: @escaping (_ weatherData: WeatherData) -> ()) {
+    func requestWeather(lat: Double, lon: Double, comlition: @escaping (_ weatherData: WeatherForecast) -> ()) {
         
-        guard let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?lat=\(lat)&lon=\(lon)&units=metric&appid=\(Constants.apiKey)") else { return }
+        guard let url = URL(string: "http://api.openweathermap.org/data/2.5/onecall?lat=\(lat)&lon=\(lon)&appid=\(Constants.apiKey)&units=metric") else { return }
         
         let dataTask = session.dataTask(with: url) { (data, responce, error) in
             if let data = data, error == nil {
-                var weatherData = WeatherData()
+                var weatherData = WeatherForecast()
                 
                 do {
                     let decoder = JSONDecoder()
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
-                    let weather = try decoder.decode(WeatherData.self, from: data)
+                    let weather = try decoder.decode(WeatherForecast.self, from: data)
                     weatherData = weather
-                    print(weather)
                 } catch {
                     print("Error on download weather")
                 }

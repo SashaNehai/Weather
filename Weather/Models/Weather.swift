@@ -9,14 +9,24 @@
 import Foundation
 
 struct Weather {
-    var cityName: String?
-    var temp: Double?
-    var tempMin: Double?
-    var tempMax: Double?
+    var temp: String?
+    var forecast: [ForecastByDate]?
     var description: String?
     var info: [AdditionalInfo]?
+    var hourForecast: [ForecastByHour]?
 }
 
 struct AdditionalInfo {
     var info: [[String : String?]]
+}
+
+struct ForecastByDate {
+    var day: String
+    var tempMax: String
+    var tempMin: String
+}
+
+struct ForecastByHour {
+    var hour: String
+    var temp: String
 }
