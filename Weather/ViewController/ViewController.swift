@@ -23,7 +23,6 @@ class ViewController: UIViewController {
     
     // MARK: - Variables
     var viewModel = WeatherViewModelImpl()
-    
     var weather: Weather?
     
     let locationManager = CLLocationManager()
@@ -35,7 +34,6 @@ class ViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setLocationManager()
         
         setCollectionView()
@@ -44,20 +42,9 @@ class ViewController: UIViewController {
     }
     
     // MARK: - Methods    
-    func registerCells() {
-        let nibFutureCellName = UINib(nibName: "FutureCell", bundle: nil)
-        tableView.register(nibFutureCellName, forCellReuseIdentifier: "FutureCell")
-        
-        let nibAdditionalCellName = UINib(nibName: "AdditionalCell", bundle: nil)
-        tableView.register(nibAdditionalCellName, forCellReuseIdentifier: "AdditionalCell")
-        
-        let nibCollectionCell = UINib(nibName: "CollectionViewCell", bundle: nil)
-        collectionView.register(nibCollectionCell, forCellWithReuseIdentifier: "CollectionViewCell")
-    }
-    
     func setCollectionView() {
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        flowLayout.itemSize = CGSize(width: 60, height: 100)
+        flowLayout.itemSize = CGSize(width: 75, height: 100)
         flowLayout.scrollDirection = .horizontal
         
         collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100), collectionViewLayout: flowLayout)
@@ -68,22 +55,15 @@ class ViewController: UIViewController {
         collectionView.backgroundColor = .clear
     }
     
-    func setMainLabels(temp: String?, description: String?) {
-        tempLabel.text = temp
-        weatherDescriptionLabel.text = description
-    }
-    
-    func setTodayLabels(weekDay: String?, tempMax: String?, tempMin: String?) {
-        weekDayLabel.text = weekDay
-        todayMaxLabel.text = tempMax
-        todayMinLabel.text = tempMin
-    }
-    
-    func addSeparatorToView(view: UIView, y: CGFloat) {
-        let separatorView = UIView()
-        separatorView.backgroundColor = Constants.Color.separator
-        separatorView.frame = CGRect(x: 0, y: y, width: self.view.frame.width, height: 0.75)
-        view.addSubview(separatorView)
+    func registerCells() {
+        let nibFutureCellName = UINib(nibName: "FutureCell", bundle: nil)
+        tableView.register(nibFutureCellName, forCellReuseIdentifier: "FutureCell")
+        
+        let nibAdditionalCellName = UINib(nibName: "AdditionalCell", bundle: nil)
+        tableView.register(nibAdditionalCellName, forCellReuseIdentifier: "AdditionalCell")
+        
+        let nibCollectionCell = UINib(nibName: "CollectionViewCell", bundle: nil)
+        collectionView.register(nibCollectionCell, forCellWithReuseIdentifier: "CollectionViewCell")
     }
     
     func saveWeather(weather: Weather) {
@@ -107,11 +87,28 @@ class ViewController: UIViewController {
         setTodayLabels(weekDay: today?.day, tempMax: today?.tempMax, tempMin: today?.tempMin)
     }
     
+    func setMainLabels(temp: String?, description: String?) {
+        tempLabel.text = temp
+        weatherDescriptionLabel.text = description
+    }
+    
+    func setTodayLabels(weekDay: String?, tempMax: String?, tempMin: String?) {
+        weekDayLabel.text = weekDay
+        todayMaxLabel.text = tempMax
+        todayMinLabel.text = tempMin
+    }
+    
     func reloadAllViews() {
         tableView.reloadData()
         collectionView.reloadData()
     }
     
+    func addSeparatorToView(view: UIView, y: CGFloat) {
+        let separatorView = UIView()
+        separatorView.backgroundColor = Constants.Color.separator
+        separatorView.frame = CGRect(x: 0, y: y, width: self.view.frame.width, height: 0.75)
+        view.addSubview(separatorView)
+    }
     
 }
 
@@ -194,6 +191,7 @@ extension ViewController: UITableViewDataSource {
             guard let cell: AdditionalCell = tableView.dequeueReusableCell(withIdentifier: "AdditionalCell", for: indexPath) as? AdditionalCell,
                 let info = weather?.info else { return UITableViewCell() }
             cell.setAdditionalCell(info: info[indexPath.row - forecast.count])
+            cell.separatorInset = .init(top: 0, left: 15, bottom: 0, right: 15)
             return cell
         }
     }

@@ -10,53 +10,57 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewCell" id="gTV-IL-0wX" customClass="CollectionViewCell" customModule="Weather" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="677" height="291"/>
+            <rect key="frame" x="0.0" y="0.0" width="328" height="220"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="677" height="291"/>
+                <rect key="frame" x="0.0" y="0.0" width="328" height="220"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6iZ-2e-ac5">
-                        <rect key="frame" x="5" y="5" width="667" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="5" y="5" width="318" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CeJ-Nw-pRh">
-                        <rect key="frame" x="5" y="265.5" width="667" height="20.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="5" y="197" width="318" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="I1K-lY-ALb">
-                        <rect key="frame" x="327.5" y="138" width="22" height="15"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud.heavyrain.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="I1K-lY-ALb">
+                        <rect key="frame" x="153" y="99" width="22" height="23.5"/>
                         <color key="tintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="I1K-lY-ALb" secondAttribute="height" multiplier="1:1" id="2nk-8N-hnK"/>
+                        </constraints>
                     </imageView>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="CeJ-Nw-pRh" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="03I-4d-632"/>
                 <constraint firstItem="CeJ-Nw-pRh" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6iZ-2e-ac5" secondAttribute="bottom" constant="30" id="3Cj-rM-b62"/>
+                <constraint firstItem="I1K-lY-ALb" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Dfi-4Z-SIz"/>
                 <constraint firstAttribute="trailing" secondItem="CeJ-Nw-pRh" secondAttribute="trailing" constant="5" id="EQ2-Hw-hsv"/>
                 <constraint firstItem="6iZ-2e-ac5" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="Q0v-Sk-Zcx"/>
-                <constraint firstItem="I1K-lY-ALb" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="SLu-ch-s8T"/>
                 <constraint firstItem="6iZ-2e-ac5" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="Tb5-TC-hYv"/>
                 <constraint firstAttribute="bottom" secondItem="CeJ-Nw-pRh" secondAttribute="bottom" constant="5" id="aSQ-qJ-vqf"/>
-                <constraint firstItem="I1K-lY-ALb" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="izU-OZ-CFV"/>
+                <constraint firstItem="I1K-lY-ALb" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="cFs-hs-GeI"/>
                 <constraint firstItem="6iZ-2e-ac5" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="opH-oA-B4w"/>
                 <constraint firstAttribute="trailing" secondItem="6iZ-2e-ac5" secondAttribute="trailing" constant="5" id="tbd-tG-1py"/>
                 <constraint firstItem="CeJ-Nw-pRh" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="xOb-xH-5MK"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="677" height="291"/>
+            <size key="customSize" width="328" height="220"/>
             <connections>
                 <outlet property="hourLabel" destination="6iZ-2e-ac5" id="6CS-BB-XMW"/>
                 <outlet property="tempLabel" destination="CeJ-Nw-pRh" id="glj-gp-Ad2"/>
+                <outlet property="weatherImage" destination="I1K-lY-ALb" id="Ynu-Ep-RJ8"/>
             </connections>
-            <point key="canvasLocation" x="-462" y="28"/>
+            <point key="canvasLocation" x="-715.94202898550725" y="4.0178571428571423"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="cloud" catalog="system" width="64" height="42"/>
+        <image name="cloud.heavyrain.fill" catalog="system" width="64" height="62"/>
     </resources>
 </document>

@@ -40,11 +40,13 @@ struct WeatherDescription: Decodable {
 struct HourlyWeatherData: Decodable {
     var dt: Int?
     var temp: Double?
+    var weather: [WeatherDescription]?
 }
 
 struct DailyWeatherData: Decodable {
     var dt: Int?
     var temp: Temperature?
+    var weather: [WeatherDescription]?
 }
 
 struct Temperature: Decodable {

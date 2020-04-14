@@ -23,11 +23,14 @@ struct AdditionalInfo: Codable {
 
 struct ForecastByDate: Codable {
     var day: String
+    var main: String
     var tempMax: String
     var tempMin: String
 }
 
 struct ForecastByHour: Codable {
-    var hour: String
+    var timestamp: Int?
+    var hour: String?
+    var main: String
     var temp: String
 }

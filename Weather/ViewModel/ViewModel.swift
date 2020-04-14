@@ -20,22 +20,27 @@ extension WeatherViewModelImpl: WeatherViewModel {
     
     func requestWeather(lat: Double, lon: Double, comlition: @escaping (_ weatherData: Weather) -> ()) {
         Downloader.sharedInstance.requestWeather(lat: lat, lon: lon) { (data) in
+            let sunrise = TimeConverter.convertTimestampToTime(data.timezone, data.current?.sunrise)
+            let sunset = TimeConverter.convertTimestampToTime(data.timezone, data.current?.sunset)
             
             let weather = Weather(temp: "\(Int(data.current?.temp ?? 0.0))º",
                 forecast: data.daily.map({ (dailyForecast) -> [ForecastByDate] in
                     return dailyForecast.map { (dayForecast) -> ForecastByDate in
                         
-                        return ForecastByDate(day: TimeConverter.convertTimestampToWeekDay(dayForecast.dt) ?? "",
-                                              tempMax: "\(Int(dayForecast.temp?.max ?? 0))",
-                                              tempMin: "\(Int(dayForecast.temp?.min ?? 0))")
+                        return ForecastByDate(
+                            day: TimeConverter.convertTimestampToWeekDay(dayForecast.dt) ?? "",
+                            main: dayForecast.weather?[0].main ?? "",
+                            tempMax: "\(Int(dayForecast.temp?.max ?? 0))",
+                            tempMin: "\(Int(dayForecast.temp?.min ?? 0))"
+                        )
                     }
                 }),
                 main: data.current?.weather?[0].main?.capitalized ?? "",
                 description: "Today: " + (data.current?.weather?[0].description?.capitalized ?? ""),
                 info: [
                     AdditionalInfo(info: [
-                        ["Sunrise": TimeConverter.convertTimestampToTime(data.timezone, data.current?.sunrise)],
-                        ["Sunset": TimeConverter.convertTimestampToTime(data.timezone, data.current?.sunset)]
+                        ["Sunrise": sunrise],
+                        ["Sunset": sunset]
                     ]),
                     AdditionalInfo(info: [
                         ["Cloudiness": "\(Int(data.current?.clouds ?? 0.0)) %"],
@@ -55,12 +60,24 @@ extension WeatherViewModelImpl: WeatherViewModel {
                     ])
                 ],
                 hourForecast: data.hourly.map({ (hourForecast) -> [ForecastByHour] in
-                    return hourForecast.map { (hourForecast) ->  ForecastByHour in
-                        
-                        return ForecastByHour(hour: TimeConverter.convertTimestampToHour(data.timezone, hourForecast.dt) ?? "UTC",
-                                              temp: "\(Int(hourForecast.temp ?? 0.0))º")
+                    
+                    var hourForecast = hourForecast.map { (hourForecast) ->  ForecastByHour in
+                        return ForecastByHour(
+                            timestamp: hourForecast.dt,
+                            hour: TimeConverter.convertTimestampToHour(data.timezone, hourForecast.dt),
+                            main: hourForecast.weather?[0].main ?? "",
+                            temp: "\(Int(hourForecast.temp ?? 0.0))º"
+                        )
                     }
                     
+                    hourForecast.insert(ForecastByHour(timestamp: data.current?.sunrise, hour: sunrise, main: "Sunrise", temp: "Sunrise"), at: 0)
+                    hourForecast.insert(ForecastByHour(timestamp: data.current?.sunset, hour: sunset, main: "Sunset", temp: "Sunset"), at: 0)
+                    hourForecast = hourForecast.sorted { $0.timestamp ?? 0 < $1.timestamp ?? 0 }
+                    
+                    _ = hourForecast[0].main == "Sunrise" ? hourForecast.removeFirst() : nil
+                    _ = hourForecast[0].main == "Sunset" ? hourForecast.removeFirst() : nil
+                    
+                    return hourForecast
                 }))
             
             comlition(weather)

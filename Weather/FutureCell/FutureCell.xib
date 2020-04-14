@@ -52,8 +52,8 @@
                             </view>
                         </subviews>
                     </stackView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud.sun.rain.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="pmL-O8-qWr">
-                        <rect key="frame" x="273" y="47" width="27.5" height="33"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud.rain" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="pmL-O8-qWr">
+                        <rect key="frame" x="275.5" y="52.5" width="22" height="23.5"/>
                         <color key="tintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="pmL-O8-qWr" secondAttribute="height" multiplier="1:1" id="tfY-Bt-X4b"/>
@@ -73,12 +73,13 @@
             <connections>
                 <outlet property="maxTempLabel" destination="lhA-db-6Tc" id="rEC-Nk-MKa"/>
                 <outlet property="minTempLabel" destination="kPx-lI-3iQ" id="Q1U-11-w4n"/>
+                <outlet property="weatherImage" destination="pmL-O8-qWr" id="oJA-et-Pnc"/>
                 <outlet property="weekDayLabel" destination="NC6-29-744" id="a3r-ma-wyV"/>
             </connections>
             <point key="canvasLocation" x="65.94202898550725" y="86.049107142857139"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="cloud.sun.rain.fill" catalog="system" width="64" height="58"/>
+        <image name="cloud.rain" catalog="system" width="64" height="62"/>
     </resources>
 </document>

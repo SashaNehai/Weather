@@ -14,12 +14,14 @@ class FutureCell: UITableViewCell {
     @IBOutlet weak private var weekDayLabel: UILabel!
     @IBOutlet weak private var maxTempLabel: UILabel!
     @IBOutlet weak private var minTempLabel: UILabel!
+    @IBOutlet weak private var weatherImage: UIImageView!
     
     // MARK: - Methods
     func setFutureCell(forecast: ForecastByDate) {
         weekDayLabel.text = forecast.day
         maxTempLabel.text = forecast.tempMax
         minTempLabel.text = forecast.tempMin
+        weatherImage?.image = WeatherType(rawValue: forecast.main)?.image ?? Constants.defaultWeatherImage
     }
     
 }
