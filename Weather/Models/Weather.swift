@@ -8,25 +8,26 @@
 
 import Foundation
 
-struct Weather {
+struct Weather: Codable {
     var temp: String?
     var forecast: [ForecastByDate]?
+    var main: String?
     var description: String?
     var info: [AdditionalInfo]?
     var hourForecast: [ForecastByHour]?
 }
 
-struct AdditionalInfo {
+struct AdditionalInfo: Codable {
     var info: [[String : String?]]
 }
 
-struct ForecastByDate {
+struct ForecastByDate: Codable {
     var day: String
     var tempMax: String
     var tempMin: String
 }
 
-struct ForecastByHour {
+struct ForecastByHour: Codable {
     var hour: String
     var temp: String
 }

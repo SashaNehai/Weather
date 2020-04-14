@@ -21,7 +21,7 @@ extension WeatherViewModelImpl: WeatherViewModel {
     func requestWeather(lat: Double, lon: Double, comlition: @escaping (_ weatherData: Weather) -> ()) {
         Downloader.sharedInstance.requestWeather(lat: lat, lon: lon) { (data) in
             
-            let weather = Weather(temp: "\(Int(data.current?.temp ?? 0.0))",
+            let weather = Weather(temp: "\(Int(data.current?.temp ?? 0.0))º",
                 forecast: data.daily.map({ (dailyForecast) -> [ForecastByDate] in
                     return dailyForecast.map { (dayForecast) -> ForecastByDate in
                         
@@ -30,6 +30,7 @@ extension WeatherViewModelImpl: WeatherViewModel {
                                               tempMin: "\(Int(dayForecast.temp?.min ?? 0))")
                     }
                 }),
+                main: data.current?.weather?[0].main?.capitalized ?? "",
                 description: "Today: " + (data.current?.weather?[0].description?.capitalized ?? ""),
                 info: [
                     AdditionalInfo(info: [
@@ -49,14 +50,14 @@ extension WeatherViewModelImpl: WeatherViewModel {
                         ["Pressure": "\(Int(data.current?.pressure ?? 0.0)) hPa"]
                     ]),
                     AdditionalInfo(info: [
-                        ["Visability": "\(Int(data.current?.visibility ?? 0.0)) m"],
+                        ["Visability": "\((data.current?.visibility ?? 0.0) / 1000) km"],
                         ["UV Index": "\(Int(data.current?.uvi ?? 0.0))"]
                     ])
                 ],
                 hourForecast: data.hourly.map({ (hourForecast) -> [ForecastByHour] in
                     return hourForecast.map { (hourForecast) ->  ForecastByHour in
                         
-                        return ForecastByHour(hour: TimeConverter.convertTimestampToTime(data.timezone, hourForecast.dt) ?? "UTC",
+                        return ForecastByHour(hour: TimeConverter.convertTimestampToHour(data.timezone, hourForecast.dt) ?? "UTC",
                                               temp: "\(Int(hourForecast.temp ?? 0.0))º")
                     }
                     

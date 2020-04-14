@@ -9,7 +9,8 @@
 import Foundation
 
 class WindDirection  {
-    
+   
+    // MARK: - Methods
     static func converToDirection(deg: Double?) -> String {
         guard  let deg = deg else { return "" }
         

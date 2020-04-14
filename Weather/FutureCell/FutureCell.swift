@@ -11,15 +11,15 @@ import UIKit
 class FutureCell: UITableViewCell {
 
     // MARK: - Outlets
-    @IBOutlet weak private var weekDay: UILabel!
-    @IBOutlet weak private var maxTemp: UILabel!
-    @IBOutlet weak private var minTemp: UILabel!
+    @IBOutlet weak private var weekDayLabel: UILabel!
+    @IBOutlet weak private var maxTempLabel: UILabel!
+    @IBOutlet weak private var minTempLabel: UILabel!
     
     // MARK: - Methods
     func setFutureCell(forecast: ForecastByDate) {
-        weekDay.text = forecast.day
-        maxTemp.text = forecast.tempMax
-        minTemp.text = forecast.tempMin
+        weekDayLabel.text = forecast.day
+        maxTempLabel.text = forecast.tempMax
+        minTempLabel.text = forecast.tempMin
     }
     
 }

@@ -33,6 +33,7 @@ struct CurrentWeatherData: Decodable {
 }
 
 struct WeatherDescription: Decodable {
+    var main: String?
     var description: String?
 }
 

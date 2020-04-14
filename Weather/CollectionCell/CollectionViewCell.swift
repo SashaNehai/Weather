@@ -1,8 +1,8 @@
 //
-//  CollectionViewCell.swift
+//  CollectionCell.swift
 //  Weather
 //
-//  Created by Александр Нехай on 4/13/20.
+//  Created by Александр Нехай on 4/14/20.
 //  Copyright © 2020 AlexanderNehai. All rights reserved.
 //
 
@@ -11,12 +11,14 @@ import UIKit
 class CollectionViewCell: UICollectionViewCell {
     
     // MARK: - Outlets
-    @IBOutlet weak private var hour: UILabel!
-    @IBOutlet weak private var temp: UILabel!
-    
+    @IBOutlet weak private var hourLabel: UILabel!
+    @IBOutlet weak private var tempLabel: UILabel!
+   
+    // MARK: - Methods
     func setCollectionCell(forecast: ForecastByHour) {
-        hour.text = forecast.hour
-        temp.text = forecast.temp
+        hourLabel.text = forecast.hour
+        tempLabel.text = forecast.temp
     }
     
 }
+
